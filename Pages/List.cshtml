@@ -1,0 +1,84 @@
+﻿@page
+@model WebApplication2.Pages.ListModel
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Psi</h1>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Dog[0].Rasa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dog[0].Jmeno)
+            </th>
+            <th>
+                Majitel
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Dog)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rasa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Jmeno)
+                </td>
+                <td>
+                    @Model.email
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h1>Kočky</h1>
+<p>
+    <a asp-page="CreateCat">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cat[0].Jmeno)
+            </th>
+            <th>
+                Majitel
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Cat)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Jmeno)
+                </td>
+                <td>
+                    @Model.email
+                </td>
+                <td>
+                    <a asp-page="./EditCat" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./DetailsCat" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./DeleteCat" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
