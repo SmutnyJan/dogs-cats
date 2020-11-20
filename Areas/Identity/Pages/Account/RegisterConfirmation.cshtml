@@ -1,11 +1,22 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Please confirm your account by <a href='https://localhost:44358/Identity/Account/ConfirmEmail?userId=366f3a7b-eba9-4056-9455-63854f01f5f1&amp;code=Q2ZESjhIS3J3WXVtTklKR2hKS1NSbFhSd3V4alNMWGwwdFFlSnY5UXVZcDFqTFg3SHFNeFpkV2tud3ppYzUvMUw1ckEyelRDK3FMOWNWbUhKaExNRnVPVEJmckErc1B3SUVhQkIzQlNWUUNDY3FEclMyM0x2aGV6M3hpbktUeG84ZGhjdmpCZ3VxTEFudFMzVWJMaXF6SE5xVFRNYzVJbWQwMlJPaHlaUm9IKzdkbHdIckdJcmRrRk9tU1AxRlVKUy90WVYreHcwSkhVYjd6K0VtL3FEcGdOajZQYmVuOUZKTzlCMUZkS0wyOXF6TkpieTlqOTZIYWxGRE5MVlBFeSszUENpQT09&amp;returnUrl=%2F'>clicking here</a>.
-</body>
-</html>
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Register confirmation";
+}
+
+<h1>@ViewData["Title"]</h1>
+@{
+    if (@Model.DisplayConfirmAccountLink)
+    {
+        <p>
+            This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
+            Normally this would be emailed: <a id="confirm-link" href="@Model.EmailConfirmationUrl">Click here to confirm your account</a>
+        </p>
+    }
+    else
+    {
+        <p>
+            Please check your email to confirm your account.
+        </p>
+    }
+}
